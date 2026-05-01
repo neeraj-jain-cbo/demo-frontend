@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Task Details</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<div style="margin-bottom: 20px;">
+    <a href="/" style="text-decoration:none; font-weight:bold;">
+        Back to List
+    </a>
+</div>
+<h1>Task Details</h1>
+<div class="card">
+    <p><strong>ID:</strong> <%= task.taskId %></p>
+    <p><strong>Title:</strong> <%= task.title %></p>
+    <p><strong>Description:</strong> <%= task.description %></p>
+    <p><strong>Status:</strong> <%= task.status %></p>
+    <p><strong>Due Date:</strong> <%= task.dueDate || 'N/A' %></p>
+    <div class="actions">
+        <!-- Update Status -->
+        <form method="POST" action="/tasks/<%= task.taskId %>/status">
+            <select name="status">
+                <option value="TODO" <%= task.status === 'TODO' ? 'selected' : '' %>>TODO</option>
+                <option value="IN_PROGRESS" <%= task.status === 'IN_PROGRESS' ? 'selected' : '' %>>IN_PROGRESS</option>
+                <option value="DONE" <%= task.status === 'DONE' ? 'selected' : '' %>>DONE</option>
+            </select>
+            <button type="submit" class="btn-primary">Update Status</button>
+        </form>
+        <!-- Delete -->
+        <form method="POST" action="/tasks/<%= task.taskId %>/delete">
+            <button type="submit" class="btn-danger">Delete Task</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

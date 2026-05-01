@@ -1,0 +1,23 @@
+# OS files
+.DS_Store
+
+# Git
+.git
+
+# Build
+dist/
+node_modules/
+
+# IDEs
+.idea/
+*.iws
+*.ipr
+*.iml
+.project
+.vscode/
+
+# Log file
+*.log
+
+# Other files
+.env

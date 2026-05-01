@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<h1>Task Manager</h1>
+<!-- Create Task -->
+<form method="POST" action="/tasks">
+  <input name="title" placeholder="Title" required />
+  <input name="description" placeholder="Description" required />
+  <input type="datetime-local" name="dueDate" required />
+  <select name="status">
+    <option value="TODO">TODO</option>
+    <option value="IN_PROGRESS">IN_PROGRESS</option>
+    <option value="DONE">DONE</option>
+  </select>
+  <button type="submit" class="btn-success">Create Task</button>
+</form>
+<hr/>
+
+<!-- Task Table -->
+<table>
+  <thead>
+  <tr>
+    <th>Task ID</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Status</th>
+    <th>Due Date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% if (tasks && tasks.length > 0) { %>
+    <% tasks.forEach(task => { %>
+      <tr>
+        <td><%= task.taskId %></td>
+        <td>
+          <a href="/tasks/<%= task.taskId %>">
+            <%= task.title %>
+          </a>
+        </td>
+        <td><%= task.description %></td>
+        <td><%= task.status %></td>
+        <td><%= task.dueDate || 'N/A' %></td>
+      </tr>
+    <% }) %>
+  <% } else { %>
+    <tr>
+      <td colspan="5">No tasks found</td>
+    </tr>
+  <% } %>
+  </tbody>
+</table>
+</body>
+</html>
