@@ -1,5 +1,11 @@
 ## Task Frontend (TypeScript + Node.js MVC)
 
+### node and npm versions required
+```bash
+node v20.18.0
+npm v10.8.2
+```
+
 ### Setup
 ```bash
 npm install
@@ -10,7 +16,7 @@ npm install
 npm run dev
 ```
 
-### Build, test then run
+### Build, test, run
 ```bash
 npm run build
 npm test
